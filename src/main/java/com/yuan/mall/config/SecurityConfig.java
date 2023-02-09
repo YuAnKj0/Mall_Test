@@ -1,19 +1,23 @@
 package com.yuan.mall.config;
 
+import com.yuan.mall.component.JwtAuthenticationTokenFilter;
 import com.yuan.mall.component.RestAuthenticationEntryPoint;
 import com.yuan.mall.component.RestfulAccessDeniedHandler;
 import com.yuan.mall.dto.AdminUserDetails;
+import com.yuan.mall.mbg.model.UmsAdmin;
+import com.yuan.mall.mbg.model.UmsPermission;
 import com.yuan.mall.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +25,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -88,7 +94,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
                 return new AdminUserDetails(admin,permissionList);
             }
-            throw new UsernameNotFoundException("用户名或密码错误")
+            throw new UsernameNotFoundException("用户名或密码错误");
         };
     }
     @Bean

@@ -1,5 +1,7 @@
 package com.yuan.mall.dto;
 
+import com.yuan.mall.mbg.model.UmsAdmin;
+import com.yuan.mall.mbg.model.UmsPermission;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,10 +17,10 @@ import java.util.stream.Collectors;
 
 public class AdminUserDetails implements UserDetails {
 
-    private List<Permission> permissionList;
+    private List<UmsPermission> permissionList;
     private UmsAdmin umsAdmin;
 
-    public AdminUserDetails(UmsAdmin umsAdmin,List<Permission> permissionList){
+    public AdminUserDetails(UmsAdmin umsAdmin, List<UmsPermission> permissionList) {
         this.umsAdmin = umsAdmin;
         this.permissionList = permissionList;
     }
@@ -57,6 +59,6 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return umsAdmin.getStatus().equals();
+        return umsAdmin.getStatus().equals(1);
     }
 }
