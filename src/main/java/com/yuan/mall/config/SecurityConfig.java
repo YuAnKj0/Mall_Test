@@ -1,5 +1,9 @@
 package com.yuan.mall.config;
 
+import com.yuan.mall.component.RestAuthenticationEntryPoint;
+import com.yuan.mall.component.RestfulAccessDeniedHandler;
+import com.yuan.mall.dto.AdminUserDetails;
+import com.yuan.mall.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

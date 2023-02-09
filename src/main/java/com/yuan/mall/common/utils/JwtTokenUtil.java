@@ -49,7 +49,7 @@ public class JwtTokenUtil {
     /**
      * 从token中获取登录用户名
      */
-    private String getUserNameFromToken(String token) {
+    public String getUserNameFromToken(String token) {
         String userName;
         try {
             Claims claims = getClaimsFromToken(token);
