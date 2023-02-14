@@ -1,4 +1,4 @@
-package com.macro.mall.tiny.dto;
+package com.yuan.mall.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
